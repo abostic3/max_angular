@@ -14,3 +14,4 @@ Conver .ts to .js so you can run:
 - ng new PROJECTNAME(cannot contain special characters)
 # Build and Run project
 	-	ng serve [option]
+
