@@ -20,3 +20,5 @@ Conver .ts to .js so you can run:
 	- add '"start": "node node_modules/prs-webapi-server/server.js",' to package.json in that dir
 	-  'npm start' to start server from inside of the dir
 	- This creates an empty user api server on port 5000(localhost:5000) to point an app to for testing
+# notes
+- create a new component for each action 
