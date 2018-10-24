@@ -1,0 +1,9 @@
+<p>Contact Info</p>
+<p><li *ngFor="let contact of contact_info">
+  {{ contact }}</li></p>
+  <hr/>
+  <p>Education</p>
+  <li *ngFor="let edu of education">
+  {{edu.name}} | {{edu.start}}-{{edu.end}} | {{edu.level}}
+  </li>
+
