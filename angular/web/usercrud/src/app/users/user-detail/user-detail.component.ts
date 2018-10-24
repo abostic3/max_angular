@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+
+import { User } from '../user.class';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+
+  constructor(private usersvc: UserService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+  
+    let id = this.route.snapshot.params.id;
+    this.usersvc.get(id).subscribe(jsonresp => {
+      console.log(jsonresp);
+      this.user=jsonresp.data;
+      });
+  
   }
 
 }

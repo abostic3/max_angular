@@ -3,8 +3,6 @@ import {Router} from '@angular/router';
 
 import { User } from '../user.class';
 import { UserService } from '../user.service';
-import { JsonResponse } from 'src/app/json-responce.class';
-
 
 @Component({
   selector: 'app-user-create',
