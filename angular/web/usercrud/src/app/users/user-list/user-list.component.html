@@ -2,8 +2,9 @@
   <header>
     <span class="page-title">User List</span>
     <span> | <a routerLink='/user/create'>Create New</a></span>
+    <span> | <input [(ngModel)]='searchCriteria' type="text"/></span>
   </header>
-  <table class="table table-sm">
+  <table class="table table-sm" *ngIf='users'>
     <thead>
       <tr>
         <td>Id</td>
@@ -17,16 +18,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr *ngFor="let user of users | searchUsers:searchCriteria | sortUsers">
         <td>{{user.Id}}</td>
         <td>{{user.FirstName}} {{user.LastName}}</td>
-        <td>{{user.LastName}}</td>
+        <td>{{user.UserName}}</td>
         <td>{{user.Phone}}</td>
         <td>{{user.Email}}</td>
-        <td>{{user.IsReviewer ? "Yes" : "No"}}</td>
-        <td>{{user.IsAdmin ? "Yes" : "No"}}</td>
+        <td>{{user.IsReviewer | boolDisplay }}</td>
+        <td>{{user.IsAdmin | boolDisplay }}</td>
         <td>
-          <span><a routerLink='/user/detail/{{user.Id}}'>View</a></span> | <span><a routerLink='/user/edit/{{user.Id}}'>Edit</a></span>
+          <span><a routerLink='/user/detail/{{user.Id}}'>View</a></span> | 
+          <span><a routerLink='/user/edit/{{user.Id}}'>Edit</a></span> | 
+          <span><a routerLink='' (click)="delete(user)">Remove</a></span>
         </td>
       </tr>
     </tbody>

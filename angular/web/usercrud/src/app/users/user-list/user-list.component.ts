@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
+
 import { UserService } from '../user.service';
 import { User } from '../user.class';
 
@@ -10,8 +12,22 @@ import { User } from '../user.class';
 export class UserListComponent implements OnInit {
 
   users: User[];
+  user: User;
 
-  constructor(private userSvc: UserService) {
+  searchCriteria='';
+
+  delete(user: User): void{
+    this.userSvc.remove(user).subscribe(jsonres => {
+      if(jsonres.rc === 200){
+        this.userSvc.list().subscribe(jsonresp => {
+          console.log(jsonresp);
+          this.users = jsonresp.data;
+        });
+      }
+    })
+  }
+
+  constructor(private userSvc: UserService, private router: Router) {
    }
 
   ngOnInit() {

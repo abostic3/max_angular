@@ -9,6 +9,9 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { BoolDisplayPipe } from './pipes/bool-display.pipe';
+import { SortUsersPipe } from './pipes/sort-users.pipe';
+import { SearchUsersPipe } from './pipes/search-users.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
     UserListComponent,
     UserDetailComponent,
     UserCreateComponent,
-    UserEditComponent
+    UserEditComponent,
+    BoolDisplayPipe,
+    SortUsersPipe,
+    SearchUsersPipe
   ],
   imports: [
     BrowserModule,
